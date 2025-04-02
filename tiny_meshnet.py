@@ -45,9 +45,9 @@ def construct_layer(dropout_p=0, bnorm=True, gelu=False, *args, **kwargs):
         affine=False,
       )
     )
-  relu = lambda x: x.relu().contiguous()
-  gelu = lambda x: x.gelu().contiguous()
-  dropout = lambda x: x.dropout(dropout_p).contiguous()
+  relu = lambda x: x.relu()
+  gelu = lambda x: x.gelu()
+  dropout = lambda x: x.dropout(dropout_p)
   layers.append(gelu if gelu else relu)
   if dropout_p > 0:
     layers.append(dropout)
@@ -128,7 +128,7 @@ def run_inference(model, nifti_path, output_path):
   
   print(f"Volume shape: {volume_data.shape}")
   print("Preprocessing volume...")
-  input_tensor = Tensor(qnormalize(volume_data), dtype=dtypes.float).rearrange("... -> 1 1 ...").contiguous()
+  input_tensor = Tensor(qnormalize(volume_data), dtype=dtypes.float).rearrange("... -> 1 1 ...")
   print("Running inference...")
   start_time = time.time()
   output = model(input_tensor).realize()
@@ -141,8 +141,8 @@ def run_inference(model, nifti_path, output_path):
 if __name__ == "__main__":
   # Paths
   nifti_path = "t1_crop.nii.gz"  # Input NIfTI file
-  model_path = "mindgrab.pth"    # Pretrained model
-  config_path = "mindgrab.json"  # Model config
+  model_path = "model.pth"    # Pretrained model
+  config_path = "model.json"  # Model config
   output_path = "segmentation_output.nii.gz"  # Output segmentation
   
   # Model parameters
