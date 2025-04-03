@@ -1,0 +1,147 @@
+{
+  "header": "A model architecture for 256^3 brains with 5 decoders, where dilation in each is structured as 16->11->8->7->5->3->2->1",
+  "in_channels": 1,
+  "channels": 30,
+  "out_channels": 2,
+  "bnorm": true,
+  "gelu": false,
+  "dropout_p": 0,
+  "layers": [
+    {
+      "in_channels": -1,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 16,
+      "stride": 1,
+      "dilation": 16
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 11,
+      "stride": 1,
+      "dilation": 11
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 8,
+      "stride": 1,
+      "dilation": 8
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 7,
+      "stride": 1,
+      "dilation": 7
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 5,
+      "stride": 1,
+      "dilation": 5
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 3,
+      "stride": 1,
+      "dilation": 3
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 2,
+      "stride": 1,
+      "dilation": 2
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 1,
+      "stride": 1,
+      "dilation": 1
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 16,
+      "stride": 1,
+      "dilation": 16
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 11,
+      "stride": 1,
+      "dilation": 11
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 8,
+      "stride": 1,
+      "dilation": 8
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 7,
+      "stride": 1,
+      "dilation": 7
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 5,
+      "stride": 1,
+      "dilation": 5
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 3,
+      "stride": 1,
+      "dilation": 3
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 2,
+      "stride": 1,
+      "dilation": 2
+    },
+    {
+      "in_channels": 5,
+      "out_channels": 5,
+      "kernel_size": 3,
+      "padding": 1,
+      "stride": 1,
+      "dilation": 1
+    },
+    {
+      "in_channels": 5,
+      "out_channels": -1,
+      "kernel_size": 1,
+      "padding": 0,
+      "stride": 1,
+      "dilation": 1
+    }
+  ]
+}

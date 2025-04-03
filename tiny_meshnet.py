@@ -141,14 +141,16 @@ def run_inference(model, nifti_path, output_path):
 if __name__ == "__main__":
   # Paths
   nifti_path = "t1_crop.nii.gz"  # Input NIfTI file
-  model_path = "model.pth"    # Pretrained model
-  config_path = "model.json"  # Model config
+  model_path = "prime.pth"
+  config_path = "prime.json" 
   output_path = "segmentation_output.nii.gz"  # Output segmentation
   
   # Model parameters
-  in_chan = 1  # T1 MRI input has 1 channel
-  channel = 15  # Number of features in hidden layers
-  n_class = 2   # Binary segmentation (background/foreground)
+  with open(config_path, "r") as f:
+    config = json.load(f)
+  in_chan = config["in_channels"] 
+  channel = config["channels"]    
+  n_class = config["out_channels"]
   
   # Initialize model
   model = MeshNet(
