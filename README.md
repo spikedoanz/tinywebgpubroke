@@ -9,6 +9,12 @@ METAL=1 python tiny_meshnet.py
 WEBGPU=1 tiny_meshnet.py
 ```
 
+or
+
+```
+./run.sh
+```
+
 
 produces different nifies (visualized in brainchop.org)
 
