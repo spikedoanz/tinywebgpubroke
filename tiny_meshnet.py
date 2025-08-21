@@ -128,7 +128,8 @@ def run_inference(model, nifti_path, output_path):
   
   print(f"Volume shape: {volume_data.shape}")
   print("Preprocessing volume...")
-  input_tensor = Tensor(qnormalize(volume_data), dtype=dtypes.float).rearrange("... -> 1 1 ...")
+  #input_tensor = Tensor(qnormalize(volume_data), dtype=dtypes.float).rearrange("... -> 1 1 ...")
+  input_tensor = Tensor(volume_data, dtype=dtypes.float).rearrange("... -> 1 1 ...")
   print("Running inference...")
   start_time = time.time()
   output = model(input_tensor).realize()
