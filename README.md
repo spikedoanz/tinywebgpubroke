@@ -1,19 +1,19 @@
 ```
-pip install -r requirements.txt
+uv pip install -e .
 python tiny_meshnet.py
 ```
 
 using default backend (metal in my case), and webgpu produces different results.
 ```
-python tiny_meshnet.py
+METAL=1 python tiny_meshnet.py
 WEBGPU=1 tiny_meshnet.py
 ```
 
 
 produces different nifies (visualized in brainchop.org)
 
-![webgpu](webgpu.png)
 ![metal](metal.png)
+![webgpu](webgpu.png)
 
 
 see also
