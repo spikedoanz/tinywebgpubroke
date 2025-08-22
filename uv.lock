@@ -3,6 +3,19 @@ revision = 1
 requires-python = ">=3.13"
 
 [[package]]
+name = "nibabel"
+version = "5.3.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "packaging" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/d9/61/33036cb89f1ec1fedbc4039602345d830b27cbd8a5c7bf28c2e5b5de3ea2/nibabel-5.3.2.tar.gz", hash = "sha256:0bdca6503b1c784b446c745a4542367de7756cfba0d72143b91f9ffb78be569b", size = 4504842 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/43/b2/dc384197be44e2a640bb43311850e23c2c30f3b82ce7c8cdabbf0e53045e/nibabel-5.3.2-py3-none-any.whl", hash = "sha256:52970a5a8a53b1b55249cba4d9bcfaa8cc57e3e5af35a29d7352237e8680a6f8", size = 3293839 },
+]
+
+[[package]]
 name = "numpy"
 version = "2.3.2"
 source = { registry = "https://pypi.org/simple" }
@@ -77,6 +90,7 @@ name = "tinywebgpubroke"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "nibabel" },
     { name = "numpy" },
     { name = "packaging" },
     { name = "tinygrad" },
@@ -84,6 +98,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "nibabel", specifier = ">=5.3.2" },
     { name = "numpy", specifier = ">=2.3.2" },
     { name = "packaging", specifier = ">=25.0" },
     { name = "tinygrad", specifier = ">=0.11.0" },

@@ -13,14 +13,6 @@ def convert_keys(torch_state_dict, tiny_state_dict):
     new_dict[t] = torch_state_dict[f]
   return new_dict
 
-def qnormalize(img, qmin=0.02, qmax=0.98):
-  """Unit interval preprocessing with clipping"""
-  qlow = np.quantile(img, qmin)
-  qhigh = np.quantile(img, qmax)
-  img = (img - qlow) / (qhigh - qlow)
-  img = np.clip(img, 0, 1)  # Clip the values to be between 0 and 1
-  return img
-
 def set_channel_num(config, in_channels, n_classes, channels):
   # input layer
   config["layers"][0]["in_channels"] = in_channels
@@ -98,10 +90,11 @@ class MeshNet:
       )
     )
     
-  def __call__(self, x):
+  def __call__(self, x:Tensor):
     # Process all layers except the last one
-    for layer in self.model:
+    for i, layer in enumerate(self.model):
       x = layer(x)
+      print(f"Layer {i}:", (x**2**0.5).sum().item())
     return x
 
 
@@ -128,11 +121,13 @@ def run_inference(model, nifti_path, output_path):
   
   print(f"Volume shape: {volume_data.shape}")
   print("Preprocessing volume...")
-  #input_tensor = Tensor(qnormalize(volume_data), dtype=dtypes.float).rearrange("... -> 1 1 ...")
+
   input_tensor = Tensor(volume_data, dtype=dtypes.float).rearrange("... -> 1 1 ...")
   print("Running inference...")
+
   start_time = time.time()
   output = model(input_tensor).realize()
+
   inference_time = time.time() - start_time
   print(f"Inference completed in {inference_time:.2f} seconds")
   
